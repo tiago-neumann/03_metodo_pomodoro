@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Changa+One:ital@0;1&display=swap');
+
+:root{
+    --background: #F85A3E;
+    --background-elements: #E15634;
+    --card: #E63B2E;
+    --border: #e13434;
+    --input: #E1E6E1;
+    --principal-text: #E1E6E1;
+    --text: ;
+}
+
+*{
+    box-sizing: border-box;
+    font-family: 'Changa One';
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: var(--background);
+}
+
+.navbar{
+    position: absolute;
+    background-color: var(--card);
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 15px 30px;
+}
+
+.bloco_navbar{
+    color: var(--principal-text);
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.bloco_navbar h1{
+    background-color: var(--background-elements);
+    padding: 2px 15px;
+    border-radius: 10px;
+    border: 2px solid var(--border);
+}
+
+.bloco_navbar button{
+    background-color: var(--background-elements);
+    padding: 10px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+}
+
+.conteiner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Bungee' !important;
+    height: 100vh;
+}
+
+
+.timer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.timer label{
+    color: var(--principal-text);
+    font-size: 30px;
+}
+
+#displayTimer{
+    color: var(--text);
+    background-color: var(--input);
+    text-align: center;
+    border: 2px solid var(--border);
+    border-radius: 20px;
+    font-size: 80px;
+    width: 300px;
+    padding: 5px;
+    transition: 0.5s ease;
+}
+
+#displayTimer:focus{
+    outline: none;
+    transform: scale(1.05);
+}
+
+.insercao{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.insercao input{
+    background-color: var(--input);
+    color: var(--text);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    text-align: center;
+    padding: 5px ;
+    width: 90px;
+    height: 30px;
+    transition: 0.5s ease;
+}
+
+.insercao input:focus{
+    outline: none;
+    transform: scale(1.1);
+}
+
+.insercao input::placeholder{
+    color: gray;
+}
+
+.controle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.controle button{
+    color: var(--principal-text);
+    background-color: var(--background-elements);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 5px 15px;
+}
+
+.contato{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px 0;
+    transform: translate(0px, -70px);
+}
+
+.contato ul{
+    display: inline-flex;
+    list-style: none;
+    gap: 50px;
+}
+
+.contato li{ 
+    transform: scale(2);
+    transition: 0.3s ease;
+}
+
+.contato li:hover{
+    transform: scale(3);
+}
+
+.contato i{
+    color: var(--principal-text);
+}

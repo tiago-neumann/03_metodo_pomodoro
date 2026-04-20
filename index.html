@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Pomodoro</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <nav class="bloco_navbar">
+                <h1>Pomodoro</h1>
+                <button id="cor"><i class="fa-solid fa-sun" style="color: var(--principal-text);"></i></button>
+            </nav>
+        </nav>
+    </header>
+    <main>
+        <div class="conteiner">
+            <div class="bloco">
+                <div class="timer">
+                    <label for="displayTimer">Tempo</label>
+                    <input type="text" id="displayTimer" name="displayTimer">
+                </div>
+                <div class="insercao">
+                    <input type="text" id="adicionarTempo" placeholder="Tempo de foco">
+                    <input type="text" id="adicionarPausa" placeholder="Tempo de pausa">
+                    <input type="text" id="quantidadePausa" placeholder="Quantidades de pausa">
+                </div>
+                <div class="controle">
+                    <button id="start"><i class="fa-solid fa-play"></i></button>
+                    <button id="pause"><i class="fa-solid fa-pause"></i></button>
+                    <button id="reset"><i class="fa-solid fa-arrows-rotate"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="contato">
+            <ul>
+                <li><a href="https://github.com/tiago-neumann"><i class="fa-brands fa-github"></i></a></li>
+                <li><a href="https://www.instagram.com/_tiagoneumann/"><i class="fa-brands fa-instagram"></i></a></li>
+                <li><a href="https://wa.me/5547992190072"><i class="fa-solid fa-phone"></i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
