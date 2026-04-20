@@ -51,16 +51,32 @@ body{
     padding: 10px;
     border: 2px solid var(--border);
     border-radius: 10px;
+    transition: 0.2s ease;
+}
+
+.bloco_navbar button:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.bloco_navbar button:active{
+    background-color: rgba(128, 128, 128, 0.2);
+    border: 2px solid rgba(128, 128, 128, 0.2);
 }
 
 .conteiner{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Bungee' !important;
     height: 100vh;
 }
 
+.bloco{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 .timer{
     display: flex;
@@ -84,6 +100,7 @@ body{
     font-size: 80px;
     width: 300px;
     padding: 5px;
+    font-family: 'Bungee';
     transition: 0.5s ease;
 }
 
@@ -124,7 +141,9 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 20px;
     gap: 10px;
+    margin-bottom: 15px;
 }
 
 .controle button{
@@ -133,6 +152,34 @@ body{
     border: 2px solid var(--border);
     border-radius: 12px;
     padding: 5px 15px;
+    height: 30px;
+    transition: 0.5s ease;
+}
+
+.controle button:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    height: 40px;
+}
+
+.controle button:active{
+    background-color: rgba(128, 128, 128, 0.2);
+    border: 2px solid rgba(128, 128, 128, 0.2);
+}
+
+.controle button p{
+    opacity: 0;
+    transform: translate(0px, -15px);
+    transition: 0.5s ease;
+}
+
+.controle button:hover p{
+    transform: translate(0px, 0px);
+    opacity: 1;
+}
+
+#erros{
+    color: rgb(200, 0, 0);
 }
 
 .contato{

@@ -21,18 +21,19 @@
             <div class="bloco">
                 <div class="timer">
                     <label for="displayTimer">Tempo</label>
-                    <input type="text" id="displayTimer" name="displayTimer">
+                    <input type="text" id="displayTimer" name="displayTimer" readonly>
                 </div>
                 <div class="insercao">
-                    <input type="text" id="adicionarTempo" placeholder="Tempo de foco">
-                    <input type="text" id="adicionarPausa" placeholder="Tempo de pausa">
-                    <input type="text" id="quantidadePausa" placeholder="Quantidades de pausa">
+                    <input type="number" step="1" id="adicionarTempo" placeholder="T. Foco" oninput="verificarErros()">
+                    <input type="number" step="1" id="adicionarPausa" placeholder="T. Pausa" oninput="verificarErros()">
+                    <input type="number" step="1" id="quantidadePausa" placeholder="Q. Pausa" oninput="verificarErros()">
                 </div>
                 <div class="controle">
-                    <button id="start"><i class="fa-solid fa-play"></i></button>
-                    <button id="pause"><i class="fa-solid fa-pause"></i></button>
-                    <button id="reset"><i class="fa-solid fa-arrows-rotate"></i></button>
+                    <button id="play"><i class="fa-solid fa-play"></i><p>Play</p></button>
+                    <button id="pause"><i class="fa-solid fa-pause"></i> <p>Pause</p></button>
+                    <button id="reset"><i class="fa-solid fa-arrows-rotate"></i><p>Reset</p></button>
                 </div>
+                <p id="erros">&nbsp;</p>
             </div>
         </div>
     </main>
