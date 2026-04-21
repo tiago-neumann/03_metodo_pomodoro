@@ -24,9 +24,9 @@
                     <input type="text" id="displayTimer" name="displayTimer" readonly>
                 </div>
                 <div class="insercao">
-                    <input type="number" step="1" id="adicionarTempo" placeholder="T. Foco" oninput="verificarErros()">
-                    <input type="number" step="1" id="adicionarPausa" placeholder="T. Pausa" oninput="verificarErros()">
-                    <input type="number" step="1" id="quantidadePausa" placeholder="Q. Pausa" oninput="verificarErros()">
+                    <input type="number" step="1" id="adicionarTempo" placeholder="T. Foco" max="60" min="1">
+                    <input type="number" step="1" id="adicionarPausa" placeholder="T. Pausa" max="60" min="1">
+                    <input type="number" step="1" id="quantidadePausa" placeholder="Q. Pausa" max="30" min="1">
                 </div>
                 <div class="controle">
                     <button id="play"><i class="fa-solid fa-play"></i><p>Play</p></button>

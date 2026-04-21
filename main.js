@@ -1,7 +1,9 @@
 const displayTimer = document.getElementById('displayTimer');
-let tempoAdicionado = document.getElementById('AdicionarTempo');
-let tempoPausa = document.getElementById('adicionarPausa');
-let pausas = document.getElementById('quantidadePausa');
+const inputFoco = document.getElementById('adicionarTempo');
+const inputPausa = document.getElementById('adicionarPausa');
+const inputQtdPausa = document.getElementById('quantidadePausa');
+
+const play = document.getElementById('play');
 
 const erros = document.getElementById('erros');
 
@@ -9,21 +11,63 @@ window.onload = function(){
     displayTimer.value = "00:00";
 }
 
-function verificarErros(){
-    if(tempoAdicionado > 60 || tempoAdicionado < 0){
-        erros.textContent = "Valor do tempo de foco inválido!"
-        tempoAdicionado.value = 0;
-    }
+function atualizarDisplay(minutos, segundos){
 
-    if(tempoPausa > 60 || tempoPausa < 1){
-        erros.textContent = "Valor do tempo de pausa inválido!"
-        Number(tempoPausa.value) = 0;
-    }
+    let segundosCertos = String(segundos).padStart(2, "0");
+    let minutosCertos = String(minutos).padStart(2, "0");
 
-    if(pausas > 30 || pausar < 1){
-        erros.textContent = "Valor do número de pausas inválido!"
-        pausas.value = 5;
-    }
-
-    erros.textContent = "";
+    displayTimer.value = `${minutosCertos}:${segundosCertos}`
 }
+
+let verificador;
+
+function verificarErros(){
+    verificador = false;
+
+    const tempoAdicionado = Number(inputFoco.value);
+    const tempoPausa = Number(inputPausa.value);
+    const qtdPausa = Number(inputQtdPausa.value);
+
+    if(!tempoAdicionado){
+        erros.textContent = "Valor do tempo de foco inválido!"
+    } else if(!tempoPausa){
+        erros.textContent = "Valor do tempo de pausa inválido!"
+    } else if(!qtdPausa){
+        erros.textContent = "Valor da quantidade de pausas inválido!"
+    } else {
+        verificador = true;
+    }
+}
+
+function calcularTempo(){
+    const tempoAdicionado = Number(inputFoco.value);
+    const tempoPausa = Number(inputPausa.value);
+    const qtdPausa = Number(inputQtdPausa.value);
+
+    let minutos = tempoAdicionado;
+    let segundos = 0;
+
+    atualizarDisplay(minutos,segundos);
+    
+        const timer = setInterval(() => {
+            if(segundos === 0){
+                if(minutos === 0){
+                    clearInterval(timer);
+                    return;
+                }
+                segundos = 59;
+                minutos --;
+            } else{
+                segundos--;
+            }
+
+            atualizarDisplay(minutos, segundos);
+        }, 1000);
+}
+
+play.addEventListener('click', function(){
+        verificarErros();
+    if(verificador === true){
+        calcularTempo();
+    }
+});
