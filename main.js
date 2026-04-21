@@ -1,4 +1,5 @@
 const displayTimer = document.getElementById('displayTimer');
+const titleTempo = document.querySelector('label[for="displayTimer"]');
 const inputFoco = document.getElementById('adicionarTempo');
 const inputPausa = document.getElementById('adicionarPausa');
 const inputQtdPausa = document.getElementById('quantidadePausa');
@@ -28,28 +29,33 @@ function verificarErros(){
     const tempoPausa = Number(inputPausa.value);
     const qtdPausa = Number(inputQtdPausa.value);
 
-    if(!tempoAdicionado){
+    if(!tempoAdicionado || tempoAdicionado > 60 || tempoAdicionado < 0){
         erros.textContent = "Valor do tempo de foco inválido!"
-    } else if(!tempoPausa){
+    } else if(!tempoPausa || tempoPausa > 60 || tempoPausa < 0){
         erros.textContent = "Valor do tempo de pausa inválido!"
-    } else if(!qtdPausa){
+    } else if(!qtdPausa || qtdPausa > 30 || qtdPausa < 0){
         erros.textContent = "Valor da quantidade de pausas inválido!"
     } else {
         verificador = true;
     }
 }
 
-function calcularTempo(){
-    const tempoAdicionado = Number(inputFoco.value);
-    const tempoPausa = Number(inputPausa.value);
-    const qtdPausa = Number(inputQtdPausa.value);
+let minutos;
+let segundos;
+let timer = null;
+let tempoInicializado = false;
 
-    let minutos = tempoAdicionado;
-    let segundos = 0;
+function calcularTempo(){
+
+    if(!tempoInicializado){
+        minutos = Number(inputFoco.value);
+        segundos = 0;
+        tempoInicializado = true;
+    }
 
     atualizarDisplay(minutos,segundos);
     
-        const timer = setInterval(() => {
+        timer = setInterval(() => {
             if(segundos === 0){
                 if(minutos === 0){
                     clearInterval(timer);
@@ -65,9 +71,43 @@ function calcularTempo(){
         }, 1000);
 }
 
+let interacao = true;
+
+function iniciarTimer(){
+    if(interacao === true){
+        calcularTempo();
+        interacao = false;
+    }
+}
+
+function pararTimer(){
+    if(interacao === false){
+        clearInterval(timer);
+        interacao = true;
+    } else {
+        erros.textContent = "Timer ainda não foi iniciado!"
+    }
+}
+
+function resetarTimer(){
+    minutos = 0;
+    segundos = 0;
+    tempoInicializado = false; 
+    clearInterval(timer);
+    atualizarDisplay(minutos, segundos);
+    inputFoco.value = "";
+    inputPausa.value = "";
+    inputQtdPausa.value = "";
+}
+
 play.addEventListener('click', function(){
         verificarErros();
     if(verificador === true){
-        calcularTempo();
+        iniciarTimer();
+        erros.innerHTML = "&nbsp";
     }
 });
+
+pause.addEventListener('click', pararTimer); 
+
+reset.addEventListener('click', resetarTimer); 
