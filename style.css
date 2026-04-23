@@ -21,14 +21,17 @@ body{
     background-color: var(--background);
 }
 
-.navbar{
+.conjunto_nav{
     position: absolute;
+    width: 100%;
+}
+
+.navbar{
     background-color: var(--card);
     border-bottom: 2px solid var(--border);
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
     padding: 15px 30px;
 }
 
@@ -36,6 +39,7 @@ body{
     color: var(--principal-text);
     display: inline-flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
 }
 
@@ -62,6 +66,22 @@ body{
 .bloco_navbar button:active{
     background-color: rgba(128, 128, 128, 0.2);
     border: 2px solid rgba(128, 128, 128, 0.2);
+}
+
+.aba_config{
+    display: none;
+    justify-content: end;
+    align-items: center;
+}
+
+.aba_config div{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: solid 2px rgba(128, 128, 128, 0.5);
+    border-radius: 0px 0px 10px 10px ;
+    padding: 10px;
+    gap: 5px;
 }
 
 .conteiner{

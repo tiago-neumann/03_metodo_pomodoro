@@ -3,6 +3,10 @@ const titleTempo = document.querySelector('label[for="displayTimer"]');
 const inputFoco = document.getElementById('adicionarTempo');
 const inputPausa = document.getElementById('adicionarPausa');
 const inputQtdPausa = document.getElementById('quantidadePausa');
+const range = document.getElementById('mudar_velocidade');
+const valor_range = document.getElementById('valor_range')
+const config = document.getElementById('config');
+const aba_config = document.querySelector('.aba_config');
 
 const play = document.getElementById('play');
 
@@ -10,6 +14,7 @@ const erros = document.getElementById('erros');
 
 window.onload = function(){
     displayTimer.value = "00:00";
+    range.value = 1000;
 }
 
 function atualizarDisplay(minutos, segundos){
@@ -44,11 +49,20 @@ let minutos;
 let segundos;
 let timer = null;
 let tempoInicializado = false;
+let modo = "foco";
+let ciclosRestantes;
+let velocidade = 1000;
 
 function calcularTempo(){
 
     if(!tempoInicializado){
-        minutos = Number(inputFoco.value);
+        if(modo === "foco"){
+            minutos = Number(inputFoco.value);
+            titleTempo.textContent = "Tempo de foco";
+        } else {
+            minutos = Number(inputPausa.value);
+            titleTempo.textContent = "Tempo de pausa";
+        }
         segundos = 0;
         tempoInicializado = true;
     }
@@ -59,6 +73,22 @@ function calcularTempo(){
             if(segundos === 0){
                 if(minutos === 0){
                     clearInterval(timer);
+            
+                    if(modo === "foco"){
+                        modo = "pausa";
+                    } else {
+                        modo = "foco";
+                        ciclosRestantes --;
+                    }
+
+                    if(ciclosRestantes <= 0){
+                        resetarTimer();
+                        titleTempo.textContent = "Tempo finalizado"
+                        return;
+                    }
+
+                    tempoInicializado = false;
+                    calcularTempo();
                     return;
                 }
                 segundos = 59;
@@ -68,7 +98,7 @@ function calcularTempo(){
             }
 
             atualizarDisplay(minutos, segundos);
-        }, 1000);
+        }, velocidade);
 }
 
 let interacao = true;
@@ -77,6 +107,7 @@ function iniciarTimer(){
     if(interacao === true){
         calcularTempo();
         interacao = false;
+        ciclosRestantes = Number(inputQtdPausa.value);
     }
 }
 
@@ -93,6 +124,7 @@ function resetarTimer(){
     minutos = 0;
     segundos = 0;
     tempoInicializado = false; 
+    interacao = true;
     clearInterval(timer);
     atualizarDisplay(minutos, segundos);
     inputFoco.value = "";
@@ -111,3 +143,16 @@ play.addEventListener('click', function(){
 pause.addEventListener('click', pararTimer); 
 
 reset.addEventListener('click', resetarTimer); 
+
+range.addEventListener('input', function() {
+    valor_range.textContent = `${range.value/1000}s`;
+    velocidade = range.value;
+});
+
+config.addEventListener('click', function() {
+    if(aba_config.style.display === 'none'){
+        aba_config.style.display = 'flex';
+    } else {
+        aba_config.style.display = 'none'; 
+    }
+});

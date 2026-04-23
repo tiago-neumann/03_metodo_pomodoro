@@ -9,12 +9,26 @@
 </head>
 <body>
     <header>
-        <nav class="navbar">
-            <nav class="bloco_navbar">
+        <nav class="conjunto_nav">
+            <nav class="navbar">
+                <nav class="bloco_navbar">
                 <h1>Pomodoro</h1>
-                <button id="cor"><i class="fa-solid fa-sun" style="color: var(--principal-text);"></i></button>
+                    <div>
+                        <button id="cor"><i class="fa-solid fa-sun" style="color: var(--principal-text);"></i></button>
+                        <button id="config"><i class="fa-solid fa-gear" style="color: var(--principal-text);"></i></button>
+                    </div>
+                </nav>
             </nav>
+                <div class="aba_config">
+                    <div>
+                        <label for="mudar_velocidade">Velocidade do Timer</label>
+                        <input type="range" id="mudar_velocidade" name="mudar_velocidade" min="1" max="1000">
+                        <span id="valor_range">1s</span>
+                        <p style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 0.6rem;">Obs: essa mecânica só deve ser utilizada para testes</p>
+                    </div>
+                </div>
         </nav>
+        
     </header>
     <main>
         <div class="conteiner">
