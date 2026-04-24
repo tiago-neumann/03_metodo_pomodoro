@@ -7,7 +7,7 @@
     --border: #e13434;
     --input: #E1E6E1;
     --principal-text: #E1E6E1;
-    --text: ;
+    --text: #1A1A1A;
 }
 
 *{
@@ -72,13 +72,13 @@ body{
     display: none;
     justify-content: end;
     align-items: center;
+    margin-right: 5px;
 }
 
 .aba_config div{
     display: flex;
     flex-direction: column;
     background-color: rgba(255, 255, 255, 0.5);
-    border: solid 2px rgba(128, 128, 128, 0.5);
     border-radius: 0px 0px 10px 10px ;
     padding: 10px;
     gap: 5px;

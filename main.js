@@ -7,14 +7,65 @@ const range = document.getElementById('mudar_velocidade');
 const valor_range = document.getElementById('valor_range')
 const config = document.getElementById('config');
 const aba_config = document.querySelector('.aba_config');
+const btn_cor = document.getElementById('cor');
 
 const play = document.getElementById('play');
 
 const erros = document.getElementById('erros');
 
+const temas = {
+    0: {
+        '--background': '#F85A3E',
+        '--background-elements': '#E15634',
+        '--card': '#E63B2E',
+        '--border': '#e13434',
+        '--input': '#E1E6E1',
+        '--principal-text': '#E1E6E1',
+        '--text': '#1A1A1A'
+    },
+
+    1: {
+        '--background': '#3EF87A',
+        '--background-elements': '#34E16F',
+        '--card': '#2ED65F',
+        '--border': '#28C255',
+        '--input': '#E1E6E1',
+        '--principal-text': '#E1E6E1',
+        '--text': '#1A1A1A'
+    },
+
+    2: {
+        '--background': '#7A3EF8',
+        '--background-elements': '#6F34E1',
+        '--card': '#5F2ED6',
+        '--border': '#5528C2',
+        '--input': '#E1E6E1',
+        '--principal-text': '#E1E6E1',
+        '--text': '#1A1A1A'
+    }
+};
+
 window.onload = function(){
     displayTimer.value = "00:00";
     range.value = 1000;
+}
+
+let indice = 0;
+
+function mudarCor(){
+    const root = document.documentElement;
+
+    if(indice >= 2){
+        indice = 0;
+    } else {
+        indice++;
+    }
+
+    const tema = temas[indice];
+
+    for (let propriedade in tema) {
+        root.style.setProperty(propriedade, tema[propriedade]);
+    }
 }
 
 function atualizarDisplay(minutos, segundos){
